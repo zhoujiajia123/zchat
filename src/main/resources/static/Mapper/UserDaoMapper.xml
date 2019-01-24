@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.zchat.dao.UserDao">
+    <resultMap id="userMap" type="com.zj.zchat.pojo.User">
+        <id property="username" column="username"/>
+        <result property="email" column="emal"/>
+        <result property="mobile" column="mobile"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <sql id="queryCondition">
+        <where>
+            <if test="username!=null and username!=''">and username=#{username}</if>
+            <if test="password!= null and password != ''">and password = #{password}</if>
+            <if test="email!=null and email!=''">and email=#{email}</if>
+            <if test="mobile!=null and mobile!=''">and mobile=#{mobile}</if>
+        </where>
+    </sql>
+
+    <select id="getByMap" parameterType="map" resultMap="userMap">
+       SECTION * FROM user
+        <include refid="queryCondition" />
+    </select>
+
+    <select id="getByUsername" parameterType="String" resultMap="userMap">
+    	SELECT * FROM user WHERE username =#{username}
+    </select>
+
+</mapper>

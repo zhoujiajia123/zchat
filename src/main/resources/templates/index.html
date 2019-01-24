@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!--自定义的js-->
+    <script type="text/javascript" src="/resource/js/index.js"></script>
+    <script type="text/javascript" src="/resource/js/websocket.js"></script>
+</head>
+<body>
+    <div class="container">
+       <input id="username" hidden="hidden" th:value="${username}"/>
+        <input id="friends" hidden="hidden" th:value="${friends}">
+        <div align="center" style="margin-top: 5%">
+            <h2>聊天系统</h2>
+        </div>
+        <div id="main" class="row" style="margin-top: 5%">
+            <div id="left" style="width: 15%">
+                <div id="tag">
+                    <button type="button" class="btn btn-block">好友列表</button>
+                </div>
+
+                <div class="flist" style="overflow-y: scroll;height: 400px;">
+                    <ul class="list-group" id="group">
+                      <!--  <li class="list-group-item" >shaoshuai</li>
+                        <li class="list-group-item" >zhoudaxia</li>
+                        <li class="list-group-item" >zhanglei</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div id="right" style="background: beige;width: 85%" >
+                <div align="center">登录状态:<span id="status"></span>聊天对象:<span id="chatobj"></span></div>
+                <div id="chatContent" style="overflow-y: scroll;height: 400px"></div>
+            </div>
+        </div>
+
+        <div class="row" id="input">
+            <div style="width: 80%" >
+                <input type="text" id="inputWord" class="form-control" placeholder="输入聊天信息">
+            </div>
+            <div style="width: 20%">
+                <button class="btn btn-primary btn-block" onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
